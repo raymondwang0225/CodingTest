@@ -15,15 +15,12 @@ def get_data_B(url):
 # 呼叫函數，取得data_B
 url = "https://ordapi.bestinslot.xyz/v1/get_collection_snapshot/bitcoin-frogs-snapshot.json"
 #data = get_data_B(url)
-data_a = {
-    "first column": [1, 2, 3, 4],
-    "second column": [10, 20, 30, 40],
-}
+
 data_b = [
-    {"first column":1,"second column":10},
-    {"first column":2,"second column":20},
-    {"first column":3,"second column":30000000},
-    {"first column":1,"second column":10}
+    {'rank': 4303, 'wallet': 'bc1qrxm4gqvkkwmag72eqjvmjlj97luwdrvzz8g4xm', 'inscriptions_count': 1, 'Holding %': 0.01},
+    {'rank': 4304, 'wallet': 'bc1qrxm4gqvkkwmag72eqjvmjlj97luwdrvzz8g4xm', 'inscriptions_count': 1, 'Holding %': 0.01},
+    {'rank': 4305, 'wallet': 'bc1qrxm4gqvkkwmag72eqjvmjlj97luwdrvzz8g4xm', 'inscriptions_count': 1, 'Holding %': 0.01},
+    {'rank': 4306, 'wallet': 'bc1qrxm4gqvkkwmag72eqjvmjlj97luwdrvzz8g4xm', 'inscriptions_count': 1, 'Holding %': 0.01},
 ]
 # 印出data_B檢查結果
 #print(data_B)
