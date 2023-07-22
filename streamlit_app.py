@@ -10,11 +10,7 @@ def get_data_B(url):
     data_A = response.json()
 
     # 調整data_A成新的內容(data_B)並新增"Holding %"屬性
-    data_B = [{"rank": n,
-               "wallet": item["wallet"],
-               "inscriptions_count": item["inscriptions_count"],
-               "Holding %": round(item["inscriptions_count"] / 10000, 4)} 
-              for n, item in enumerate(data_A, start=1)]
+    data_B = [{"rank": n for n, item in enumerate(data_A, start=1)]
 
     cc=data_B
 
