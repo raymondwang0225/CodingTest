@@ -25,7 +25,8 @@ data_b = [
 ]
 # 印出data_B檢查結果
 #print(data_B)
-data_c = get_data_B(url)
+response = requests.get(url)
+data_c = response.json()
 # 將data_B轉換成DataFrame
 df = pd.DataFrame(data_c)
 
