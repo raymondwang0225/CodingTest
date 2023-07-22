@@ -2,6 +2,7 @@ import streamlit as st
 import requests
 import pandas as pd
 
+@st.cache_data
 def get_data_B(url):
     # 使用requests模組取得json數據(data_A)
     response = requests.get(url)
