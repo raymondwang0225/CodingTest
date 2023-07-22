@@ -27,15 +27,6 @@ df = pd.DataFrame(data_B)
 
 
 
-hide_st_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            header {visibility: hidden;}
-            </style>
-            """
-st.markdown(hide_st_style, unsafe_allow_html=True)
-
 st.title("Bitcoin Frogs Holding Data")
 
 #row size 35 px
