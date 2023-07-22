@@ -1,8 +1,10 @@
 import streamlit as st
 import requests
 import pandas as pd
-cc=[]
-def get_data_B(url, output_file):
+
+global cc
+
+def get_data_B(url):
     # 使用requests模組取得json數據(data_A)
     response = requests.get(url)
     data_A = response.json()
