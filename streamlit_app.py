@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 import pandas as pd
 
-global cc
+
 
 def get_data_B(url):
     # 使用requests模組取得json數據(data_A)
@@ -10,9 +10,13 @@ def get_data_B(url):
     data_A = response.json()
 
     # 調整data_A成新的內容(data_B)並新增"Holding %"屬性
-    data_B = [{"rank": n } for n in enumerate(data_A, start=1)]
+    data_B = [{"rank": n,
+               "wallet": item["wallet"],
+               "inscriptions_count": item["inscriptions_count"],
+               "Holding %": round(item["inscriptions_count"] / 10000, 4)} 
+              for n, item in enumerate(data_A, start=1)]
 
-    cc=data_B
+    return data_B
 
     
 
@@ -29,7 +33,7 @@ data_b = [
 # 印出data_B檢查結果
 #print(data_B)
 
-get_data_B(url)
+data = get_data_B(url)
 
 
 
@@ -52,4 +56,4 @@ st.markdown(hide_st_style, unsafe_allow_html=True)
 st.title("Bitcoin Frogs Holding Data")
 
 #row size 35 px
-st.dataframe(cc,height=630,use_container_width =True,hide_index=True)
+st.dataframe(data,height=630,use_container_width =True,hide_index=True)
