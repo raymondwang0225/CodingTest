@@ -27,10 +27,7 @@ def main():
     # 將data_B轉換成DataFrame
     df = pd.DataFrame(data_B)
     
-    # 顯示DataFrame
-    #print(df)
 
-    st.set_page_config(layout="wide")
 
     hide_st_style = """
                 <style>
