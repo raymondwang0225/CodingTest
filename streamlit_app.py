@@ -2,16 +2,23 @@ import streamlit as st
 import requests
 import pandas as pd
 
-@st.cache_data
-def get_data_B(url):
+def get_data_B(url, output_file):
     # 使用requests模組取得json數據(data_A)
     response = requests.get(url)
     data_A = response.json()
 
-    # 調整data_A成新的內容(data_B)
-    data_B = [{"Rank": n,"Wallet": item["wallet"],"Inscriptions Count": item["Inscriptions_count"],"Holding %": round(item["inscriptions_count"] / 100, 4)} for n, item in enumerate(data_A, start=1)]
+    # 調整data_A成新的內容(data_B)並新增"Holding %"屬性
+    data_B = [{"rank": n,
+               "wallet": item["wallet"],
+               "inscriptions_count": item["inscriptions_count"],
+               "Holding %": round(item["inscriptions_count"] / 10000, 4)} 
+              for n, item in enumerate(data_A, start=1)]
 
-    return data_B
+    # 將data_B寫入JSON檔案
+    with open(output_file, 'w') as f:
+        json.dump(data_B, f)
+
+    
 
 # 呼叫函數，取得data_B
 url = "https://ordapi.bestinslot.xyz/v1/get_collection_snapshot/bitcoin-frogs-snapshot.json"
@@ -25,10 +32,16 @@ data_b = [
 ]
 # 印出data_B檢查結果
 #print(data_B)
-response = requests.get(url)
-data_c = response.json()
+output_file = "data_c.json"
+get_data_B(url, output_file)
+
+with open("data_c.json", 'r') as f:
+    data_f = json.load(f)
+
+
+
 # 將data_B轉換成DataFrame
-df = pd.DataFrame(data_c)
+df = pd.DataFrame(data_f)
 
 
 
