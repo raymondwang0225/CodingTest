@@ -22,7 +22,7 @@ data_a = {
 data_b = [
     {"first column":1,"second column":10},
     {"first column":2,"second column":20},
-    {"first column":3,"second column":30},
+    {"first column":3,"second column":30000000},
     {"first column":1,"second column":10}
 ]
 # 印出data_B檢查結果
