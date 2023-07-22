@@ -29,20 +29,4 @@ df = pd.DataFrame(data_B)
 
 st.title("Bitcoin Frogs Holding Data")
 
-#row size 35 px
-st.dataframe(df,height=630,use_container_width =True,column_config={
-        "rank": st.column_config.Column(
-            "Rank",
-            width = "small",
-            help="Show rank order",
-        ),
-        "Holding %": st.column_config.ProgressColumn(
-            "Holding %",
-            width = "large",
-            help="Show Holding Percentage",
-            format=" %.4f%%",
-            min_value=0,
-            max_value=10,
-        ),
-       
-    },hide_index=True,)
+st.table(df)
