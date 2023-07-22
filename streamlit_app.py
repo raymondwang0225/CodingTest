@@ -1,6 +1,9 @@
 import requests
 import pandas as pd
 
+data_B=[]
+
+
 def get_data_B(url):
     # 使用requests模組取得json數據(data_A)
     response = requests.get(url)
