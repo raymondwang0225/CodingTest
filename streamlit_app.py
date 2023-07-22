@@ -2,8 +2,10 @@ import requests
 import pandas as pd
 
 
-data_B  = {'Geeks', 'For', 'Geeks', 'is', 
-            'portal', 'for', 'Geeks'}
+data_B  =  {
+            "first column": [1, 2, 3, 4],
+            "second column": [10, 20, 30, 40],
+        }
 # 將data_B轉換成DataFrame
 df = pd.DataFrame(data_B)
 
