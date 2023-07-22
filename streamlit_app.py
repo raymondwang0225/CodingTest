@@ -15,15 +15,21 @@ def get_data_B(url):
 # 呼叫函數，取得data_B
 url = "https://ordapi.bestinslot.xyz/v1/get_collection_snapshot/bitcoin-frogs-snapshot.json"
 #data = get_data_B(url)
-data = {
+data_a = {
     "first column": [1, 2, 3, 4],
     "second column": [10, 20, 30, 40],
 }
+data_b = [
+    {"first column":1,"second column":10},
+    {"first column":2,"second column":20},
+    {"first column":3,"second column":30},
+    {"first column":1,"second column":10}
+]
 # 印出data_B檢查結果
 #print(data_B)
 
 # 將data_B轉換成DataFrame
-df = pd.DataFrame(data)
+df = pd.DataFrame(data_b)
 
 
 
