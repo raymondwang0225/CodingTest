@@ -17,13 +17,13 @@ def get_data_B(url):
 def main():
     # 呼叫函數，取得data_B
     url = "https://ordapi.bestinslot.xyz/v1/get_collection_snapshot/bitcoin-frogs-snapshot.json"
-    data_B = get_data_B(url)
+    data = get_data_B(url)
     
     # 印出data_B檢查結果
     #print(data_B)
     
     # 將data_B轉換成DataFrame
-    df = pd.DataFrame(data_B)
+    df = pd.DataFrame(data)
     
 
 
