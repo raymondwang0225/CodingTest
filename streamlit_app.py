@@ -12,55 +12,43 @@ def get_data_B(url):
 
     return data_B
 
+# 呼叫函數，取得data_B
+url = "https://ordapi.bestinslot.xyz/v1/get_collection_snapshot/bitcoin-frogs-snapshot.json"
+data = get_data_B(url)
 
-# Streamlit App
-def main():
-    # 呼叫函數，取得data_B
-    url = "https://ordapi.bestinslot.xyz/v1/get_collection_snapshot/bitcoin-frogs-snapshot.json"
-    data = get_data_B(url)
-    
-    # 印出data_B檢查結果
-    #print(data_B)
-    
-    # 將data_B轉換成DataFrame
-    df = pd.DataFrame(data)
-    
+# 印出data_B檢查結果
+#print(data_B)
 
-
-    hide_st_style = """
-                <style>
-                #MainMenu {visibility: hidden;}
-                footer {visibility: hidden;}
-                header {visibility: hidden;}
-                </style>
-                """
-    st.markdown(hide_st_style, unsafe_allow_html=True)
-    
-    st.title("Bitcoin Frogs Holding Data")
-    
-    #row size 35 px
-    st.dataframe(df,height=630,use_container_width =True,column_config={
-            "Rank": st.column_config.Column(
-                "Rank",
-                width = "small",
-                help="Show rank order",
-            ),
-            "Holding %": st.column_config.ProgressColumn(
-                "Holding %",
-                width = "large",
-                help="Show Holding Percentage",
-                format=" %.4f%%",
-                min_value=0,
-                max_value=10,
-            ),
-           
-        },hide_index=True,)
+# 將data_B轉換成DataFrame
+df = pd.DataFrame(data)
 
 
 
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
 
+st.title("Bitcoin Frogs Holding Data")
 
-
-  
-if __name__ == "__main__":
-    main()
+#row size 35 px
+st.dataframe(df,height=630,use_container_width =True,column_config={
+        "Rank": st.column_config.Column(
+            "Rank",
+            width = "small",
+            help="Show rank order",
+        ),
+        "Holding %": st.column_config.ProgressColumn(
+            "Holding %",
+            width = "large",
+            help="Show Holding Percentage",
+            format=" %.4f%%",
+            min_value=0,
+            max_value=10,
+        ),
+       
+    },hide_index=True,)
