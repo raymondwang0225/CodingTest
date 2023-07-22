@@ -20,7 +20,7 @@ def main():
     
     # 印出data_B檢查結果
     #print(data_B)
-    data_B =[{'rank': 4367, 'wallet': 'bc1qzs85dl3q7pmvnju20wngzu3czcurul4qhehn2q', 'inscriptions_count': 1, 'Holding %': 0.01}]
+    data_B =[{'rank': 4367, 'wallet': 'bc1qzs85dl3q7pmvnju20wngzu3czcurul4qhehn2q', 'inscriptions_count': 1, 'Holding %': 0.01},{'rank': 4367, 'wallet': 'bc1qzs85dl3q7pmvnju20wngzu3czcurul4qhehn2q', 'inscriptions_count': 1, 'Holding %': 0.01}]
     # 將data_B轉換成DataFrame
     df = pd.DataFrame(data_B)
     
