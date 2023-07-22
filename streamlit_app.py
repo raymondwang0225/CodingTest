@@ -36,7 +36,7 @@ get_data_B(url)
 
 
 # 將data_B轉換成DataFrame
-df = pd.DataFrame(cc)
+#df = pd.DataFrame(cc)
 
 
 
@@ -52,4 +52,4 @@ st.markdown(hide_st_style, unsafe_allow_html=True)
 st.title("Bitcoin Frogs Holding Data")
 
 #row size 35 px
-st.dataframe(df,height=630,use_container_width =True,hide_index=True)
+st.dataframe(cc,height=630,use_container_width =True,hide_index=True)
