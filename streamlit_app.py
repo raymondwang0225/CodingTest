@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 import pandas as pd
-
+cc=[]
 def get_data_B(url, output_file):
     # 使用requests模組取得json數據(data_A)
     response = requests.get(url)
@@ -14,9 +14,7 @@ def get_data_B(url, output_file):
                "Holding %": round(item["inscriptions_count"] / 10000, 4)} 
               for n, item in enumerate(data_A, start=1)]
 
-    # 將data_B寫入JSON檔案
-    with open(output_file, 'w') as f:
-        json.dump(data_B, f)
+    cc=data_B
 
     
 
@@ -32,16 +30,15 @@ data_b = [
 ]
 # 印出data_B檢查結果
 #print(data_B)
-output_file = "data_c.json"
-get_data_B(url, output_file)
 
-with open("data_c.json", 'r') as f:
-    data_f = json.load(f)
+get_data_B(url)
+
+
 
 
 
 # 將data_B轉換成DataFrame
-df = pd.DataFrame(data_f)
+df = pd.DataFrame(cc)
 
 
 
