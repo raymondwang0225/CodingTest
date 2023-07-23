@@ -54,7 +54,7 @@ def main():
             ),
             "Holding %": st.column_config.ProgressColumn(
                 "Holding %",
-                width = "large",
+                width = "small",
                 help="Show Holding Percentage",
                 format=" %.2f%%",
                 min_value=0,
