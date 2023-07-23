@@ -11,7 +11,8 @@ def get_average_cost(item):
     total_cost = 0
 
     for inscription in item["inscriptions"]:
-        url = f"https://ordapi.bestinslot.xyz/v1/get_inscription_with_number/{inscription["inscription_number"]}"
+        _link = inscription["inscription_number"]
+        url = f"https://ordapi.bestinslot.xyz/v1/get_inscription_with_number/{_link}"
         response = requests.get(url)
         
         try:
