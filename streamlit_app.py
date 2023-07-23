@@ -58,7 +58,7 @@ def main():
                 help="Show Holding Percentage",
                 format=" %.4f%%",
                 min_value=0,
-                max_value=1,
+                max_value=10,
             ),
            
         },hide_index=True,)
