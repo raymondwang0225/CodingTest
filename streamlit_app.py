@@ -14,7 +14,7 @@ def get_holding_output(url):
     holding_output = [{"rank": n,
                        "wallet": item["wallet"],
                        "inscriptions_count": item["inscriptions_count"],
-                       "Holding %": round(item["inscriptions_count"] / 100, 4)} 
+                       "Holding %": round(item["inscriptions_count"] / 100, 2)} 
                       for n, item in enumerate(holding_input, start=1)]
 
     return holding_output
@@ -58,7 +58,7 @@ def main():
                 help="Show Holding Percentage",
                 format=" %.4f%%",
                 min_value=0,
-                max_value=10,
+                max_value=100,
             ),
            
         },hide_index=True,)
