@@ -10,8 +10,8 @@ import pandas as pd
 def get_average_cost(item):
     total_cost = 0
 
-    for inscription_number in item["inscriptions"]:
-        url = f"https://ordapi.bestinslot.xyz/v1/get_inscription_with_number/{inscription_number}"
+    for inscription in item["inscriptions"]:
+        url = f"https://ordapi.bestinslot.xyz/v1/get_inscription_with_number/{inscription["inscription_number"]}"
         response = requests.get(url)
         
         try:
@@ -30,7 +30,7 @@ def get_average_cost(item):
             else:
                 total_cost += last_transfer["psbt_sale"]
 
-    average_cost = total_cost / len(item["inscriptions"]) if len(item["inscriptions"]) > 0 else 0
+    average_cost = total_cost / item["inscriptions_count"] if item["inscriptions_count"] > 0 else 0
     return average_cost
 
 def get_holding_output(url):
