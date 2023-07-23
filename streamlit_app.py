@@ -5,15 +5,39 @@ import pandas as pd
 import requests
 import pandas as pd
 
+
+
+def get_average_cost(item):
+    total_cost = 0
+
+    for inscription_number in item["inscriptions"]:
+        url = f"https://ordapi.bestinslot.xyz/v1/get_inscription_with_number/{inscription_number}"
+        response = requests.get(url)
+        inscription_data = response.json()
+
+        transfers = inscription_data.get("transfers", [])
+        last_transfer = transfers[-1] if transfers else None
+
+        if last_transfer and last_transfer["to"] == item["wallet"]:
+            if last_transfer["from"] is None:
+                total_cost += 0
+            else:
+                total_cost += last_transfer["psbt_sale"]
+
+    average_cost = total_cost / len(item["inscriptions"]) if len(item["inscriptions"]) > 0 else 0
+    return average_cost
+
+
 def get_holding_output(url):
     # 使用requests模組取得json數據(holding_input)
     response = requests.get(url)
     holding_input = response.json()
-
+    holding_output = []
     # 調整holding_input成新的內容(holding_output)並新增"Holding %"屬性
     holding_output = [{"Rank": n,
                        "Wallet": item["wallet"],
                        "Inscriptions Count": item["inscriptions_count"],
+                       "average cost": average_cost,
                        "Holding %": round(item["inscriptions_count"] / 100, 4)} 
                       for n, item in enumerate(holding_input, start=1)]
 
