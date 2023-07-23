@@ -49,7 +49,7 @@ def main():
     st.dataframe(data_holding_output,height=630,use_container_width =True,column_config={
             "rank": st.column_config.Column(
                 "Rank",
-                 width = None,
+                width=None,
                 help="Show rank order",
             ),
             "Holding %": st.column_config.ProgressColumn(
