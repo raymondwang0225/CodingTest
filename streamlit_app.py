@@ -2,58 +2,72 @@ import streamlit as st
 import requests
 import pandas as pd
 
+import requests
+import pandas as pd
 
-
-def get_data_B(url):
-    # 使用requests模組取得json數據(data_A)
+def get_holding_output(url):
+    # 使用requests模組取得json數據(holding_input)
     response = requests.get(url)
-    data_A = response.json()
+    holding_input = response.json()
 
-    # 調整data_A成新的內容(data_B)並新增"Holding %"屬性
-    data_B = [{"rank": n,
-               "wallet": item["wallet"],
-               "inscriptions_count": item["inscriptions_count"],
-               "Holding %": round(item["inscriptions_count"] / 10000, 4)} 
-              for n, item in enumerate(data_A, start=1)]
+    # 調整holding_input成新的內容(holding_output)並新增"Holding %"屬性
+    holding_output = [{"rank": n,
+                       "wallet": item["wallet"],
+                       "inscriptions_count": item["inscriptions_count"],
+                       "Holding %": round(item["inscriptions_count"] / 10000, 4)} 
+                      for n, item in enumerate(holding_input, start=1)]
 
-    return data_B
+    return holding_output
 
+
+
+
+
+# Streamlit App
+def main():
+     # 呼叫函數，取得holding_output
+    url = "https://ordapi.bestinslot.xyz/v1/get_collection_snapshot/bitcoin-frogs-snapshot.json"
+    data_holding_output = get_holding_output(url)
     
+    # 印出holding_output檢查結果
+    #print(data_holding_output)
 
-# 呼叫函數，取得data_B
-url = "https://ordapi.bestinslot.xyz/v1/get_collection_snapshot/bitcoin-frogs-snapshot.json"
-#data = get_data_B(url)
+    st.set_page_config(layout="wide")
 
-data_b = [
-    {'rank': 4303, 'wallet': 'bc1qrxm4gqvkkwmag72eqjvmjlj97luwdrvzz8g4xm', 'inscriptions_count': 1, 'Holding %': 0.01},
-    {'rank': 4304, 'wallet': 'bc1qrxm4gqvkkwmag72eqjvmjlj97luwdrvzz8g4xm', 'inscriptions_count': 1, 'Holding %': 0.01},
-    {'rank': 4305, 'wallet': 'bc1qrxm4gqvkkwmag72eqjvmjlj97luwdrvzz8g4xm', 'inscriptions_count': 1, 'Holding %': 0.01},
-    {'rank': 4306, 'wallet': 'bc1qrxm4gqvkkwmag72eqjvmjlj97luwdrvzz8g4xm', 'inscriptions_count': 1, 'Holding %': 0.01},
-]
-# 印出data_B檢查結果
-#print(data_B)
+    hide_st_style = """
+                <style>
+                #MainMenu {visibility: hidden;}
+                footer {visibility: hidden;}
+                header {visibility: hidden;}
+                </style>
+                """
+    st.markdown(hide_st_style, unsafe_allow_html=True)
+    
+    st.title("Bitcoin Frogs Holding Data")
+    
+    #row size 35 px
+    st.dataframe(data_holding_output,height=630,use_container_width =True,column_config={
+            "Rank": st.column_config.Column(
+                "Rank",
+                width = "small",
+                help="Show rank order",
+            ),
+            "Holding %": st.column_config.ProgressColumn(
+                "Holding %",
+                width = "large",
+                help="Show Holding Percentage",
+                format=" %.4f%%",
+                min_value=0,
+                max_value=10,
+            ),
+           
+        },hide_index=True,)
 
-data = get_data_B(url)
 
 
 
 
 
-# 將data_B轉換成DataFrame
-#df = pd.DataFrame(cc)
-
-
-
-hide_st_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            header {visibility: hidden;}
-            </style>
-            """
-st.markdown(hide_st_style, unsafe_allow_html=True)
-
-st.title("Bitcoin Frogs Holding Data")
-
-#row size 35 px
-st.dataframe(data,height=630,use_container_width =True,hide_index=True)
+  
+if __name__ == "__main__":
+    main()
