@@ -14,8 +14,7 @@ def get_holding_output(url):
     holding_output = [{"rank": n,
                        "wallet": item["wallet"],
                        "inscriptions_count": item["inscriptions_count"],
-                       "inscription list": [f"[{i['inscription_number']}](https://ordiscan.com/inscription/{i['inscription_number']})"
-                                           for i in item["inscriptions"]],
+                       "inscription list": [f'<a target="_blank" href="https://ordiscan.com/inscription/{i["inscription_number"]}">{i["inscription_number"]}</a>' for i in item["inscriptions"]],
                        "Holding %": round(item["inscriptions_count"] / 100, 4)} 
                       for n, item in enumerate(holding_input, start=1)]
 
