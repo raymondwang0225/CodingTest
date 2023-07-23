@@ -11,10 +11,10 @@ def get_holding_output(url):
     holding_input = response.json()
 
     # 調整holding_input成新的內容(holding_output)並新增"Holding %"屬性
-    holding_output = [{"rank": n,
-                       "wallet": item["wallet"],
-                       "inscriptions_count": item["inscriptions_count"],
-                       "inscription list": [f'<a target="_blank" href="https://ordiscan.com/inscription/{i["inscription_number"]}">{i["inscription_number"]}</a>' for i in item["inscriptions"]],
+    holding_output = [{"Rank": n,
+                       "Wallet": item["wallet"],
+                       "Inscriptions Count": item["inscriptions_count"],
+                       "Inscriptions List": [i["inscription_number"] for i in item["inscriptions"]],
                        "Holding %": round(item["inscriptions_count"] / 100, 4)} 
                       for n, item in enumerate(holding_input, start=1)]
 
