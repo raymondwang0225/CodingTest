@@ -25,7 +25,7 @@ def get_average_cost(item):
                 total_cost += last_transfer["psbt_sale"]
 
     average_cost = total_cost / len(item["inscriptions"]) if len(item["inscriptions"]) > 0 else 0
-    print(average_cost)
+    
     return average_cost
 
 
@@ -38,13 +38,11 @@ def get_holding_output(url):
     holding_output = [{"Rank": n,
                        "Wallet": item["wallet"],
                        "Inscriptions Count": item["inscriptions_count"],
-                       "average cost": average_cost,
+                       "average cost": get_average_cost(item),
                        "Holding %": round(item["inscriptions_count"] / 100, 4)} 
                       for n, item in enumerate(holding_input, start=1)]
 
     return holding_output
-
-
 
 
 
