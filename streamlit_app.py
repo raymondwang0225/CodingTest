@@ -28,7 +28,7 @@ def get_average_cost(item):
     
     return average_cost
 
-
+'''
 def get_holding_output(url):
     # 使用requests模組取得json數據(holding_input)
     response = requests.get(url)
@@ -43,7 +43,26 @@ def get_holding_output(url):
                       for n, item in enumerate(holding_input, start=1)]
 
     return holding_output
+'''
 
+def get_holding_output(url):
+    # 使用requests模組取得json數據(holding_input)
+    response = requests.get(url)
+    holding_input = response.json()
+
+    # 調整holding_input成新的內容(holding_output)並新增"Holding %"和"average cost"屬性
+    holding_output = []
+    for n, item in enumerate(holding_input, start=1):
+        average_cost = get_average_cost(item)
+        holding_output.append({
+            "Rank": n,
+            "Wallet": item["wallet"],
+            "Inscriptions Count": item["inscriptions_count"],
+            "Holding %": round(item["inscriptions_count"] / 100, 4),
+            "Average Cost": average_cost
+        })
+
+    return holding_output
 
 
 # Streamlit App
