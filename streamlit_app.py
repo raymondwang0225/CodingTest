@@ -46,7 +46,7 @@ def main():
     st.title("Bitcoin Frogs Holding Data")
     
     #row size 35 px
-    st.dataframe(data_holding_output,height=630,use_container_width =False,column_config={
+    st.dataframe(data_holding_output,height=630,use_container_width =True,column_config={
             "rank": st.column_config.Column(
                 "Rank-------",
                 width=None,
