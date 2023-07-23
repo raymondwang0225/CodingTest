@@ -10,9 +10,9 @@ import pandas as pd
 def get_average_cost(item):
     total_cost = 0
 
-    for inscription in item["inscriptions"]:
-        _link = inscription["inscription_number"]
-        url = f"https://ordapi.bestinslot.xyz/v1/get_inscription_with_number/{_link}"
+    for i in item["inscriptions"]:
+        inscription_number = item["inscriptions"][i]["inscription_number"]
+        url = f"https://ordapi.bestinslot.xyz/v1/get_inscription_with_number/{inscription_number}"
         response = requests.get(url)
         
         try:
