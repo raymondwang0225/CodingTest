@@ -25,6 +25,7 @@ def get_average_cost(item):
                 total_cost += last_transfer["psbt_sale"]
 
     average_cost = total_cost / len(item["inscriptions"]) if len(item["inscriptions"]) > 0 else 0
+    print(average_cost)
     return average_cost
 
 
