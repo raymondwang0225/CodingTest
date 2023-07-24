@@ -39,9 +39,24 @@ def main():
                 width=None,
                 help="Show rank order",
             ),
+            "wallet": st.column_config.Column(
+                "Wallet",
+                width="large",
+                help="Show holding address",
+            ),
+            "inscriptions_count": st.column_config.Column(
+                "Holding Frogs Count",
+                width="small",
+                help="Show holding frogs count",
+            ),
+            "average cost": st.column_config.Column(
+                "Average Cost (BTC)",
+                width="small",
+                help="Show holding address",
+            ),
             "Holding %": st.column_config.ProgressColumn(
                 "Holding %",
-                width = "small",
+                width = None,
                 help="Show Holding Percentage",
                 format=" %.2f%%",
                 min_value=0,
