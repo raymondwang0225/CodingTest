@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 import pandas as pd
-
+import json
 import requests
 import pandas as pd
 
@@ -63,11 +63,15 @@ def get_holding_output(url):
 def main():
      # 呼叫函數，取得holding_output
     url = "https://ordapi.bestinslot.xyz/v1/get_collection_snapshot/bitcoin-frogs-snapshot.json"
-    data_holding_output = get_holding_output(url)
+    data_holding_output =[]
     
     # 印出holding_output檢查結果
     #print(data_holding_output)
+    with open(file_path, "r") as file:
+        data_holding_output = json.load(file)
 
+
+    
     st.set_page_config(layout="wide")
 
     hide_st_style = """
