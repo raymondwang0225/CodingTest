@@ -64,7 +64,7 @@ def main():
      # 呼叫函數，取得holding_output
     url = "https://ordapi.bestinslot.xyz/v1/get_collection_snapshot/bitcoin-frogs-snapshot.json"
     data_holding_output =[]
-    
+    file_path = "holding_output.json"
     # 印出holding_output檢查結果
     #print(data_holding_output)
     with open(file_path, "r") as file:
