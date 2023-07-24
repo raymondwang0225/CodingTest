@@ -52,7 +52,7 @@ def main():
             "average cost": st.column_config.Column(
                 "Average Cost (BTC)",
                 width="small",
-                help="Show holding address",
+                help="Show average cost",
             ),
             "Holding %": st.column_config.ProgressColumn(
                 "Holding %",
