@@ -34,7 +34,7 @@ def main():
     
     #row size 35 px
     st.dataframe(data_holding_output,height=630,use_container_width =True,column_config={
-            "Rank": st.column_config.Column(
+            "rank": st.column_config.Column(
                 "Rank",
                 width=None,
                 help="Show rank order",
@@ -50,11 +50,5 @@ def main():
            
         },hide_index=True,)
 
-
-
-
-
-
-  
 if __name__ == "__main__":
     main()
