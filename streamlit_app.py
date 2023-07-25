@@ -56,7 +56,7 @@ def main():
             ),
               "ROI": st.column_config.Column(
                 "ROI",
-                width="large",
+                width=None,
                 help="Show return on investment",
             ),
             "Holding %": st.column_config.ProgressColumn(
